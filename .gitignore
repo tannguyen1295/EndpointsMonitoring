@@ -1,0 +1,4 @@
+**/tmp
+**/certs
+**/__pycache__
+**/environments/*.local.ini

@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'EVN', defaultValue: 'dev', description: 'Specify the environment to run on')
+        string(name: 'DAEMON_MODE', defaultValue: 'producer', description: 'Running mode for daemon to interact with Kafka (producer/consumer)')
+        string(name: 'OPERATION', defaultValue: 'restart', description: 'Opeartion for deamon (start/stop/restart)')
+    }
+
+    stages {
+        stage ('Testing') {
+            steps {
+                echo "******************************"
+                echo "Running unit test"
+                sh "/Library/Frameworks/Python.framework/Versions/3.8/bin/nosetests"
+            }
+        }
+
+        stage ('Daemon') {
+            environment {
+                DAEMON_MODE = params.DAEMON_MODE.toLowerCase()
+                OPERATION = params.OPERATION.toLowerCase()
+                JENKINS_NODE_COOKIE = "dontKillMe"
+            }
+            
+            steps {        
+                echo "Mode: ${DAEMON_MODE}"    
+                echo "Environment: ${EVN}"
+
+                echo "******************************" 
+                echo "${OPERATION} the current daemon"
+                sh "/Library/Frameworks/Python.framework/Versions/3.8/bin/python3.8 websites_monitoring_client.py --environment ${EVN} --${DAEMON_MODE} daemon ${OPERATION}"
+            }
+        }
+    }
+}
