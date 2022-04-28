@@ -21,6 +21,10 @@ And on dev env these too
 Run tests with command
 
     nosetests
+    
+## Configuration
+
+There's a template under environments/dev.ini that could be used. More details could be found in [Config reference](docs/config_reference.md).
 
 # Additional dcoumentation
 
