@@ -30,6 +30,7 @@ There's a template under environments/dev.ini that could be used. More details c
 
 - [Usage](docs/usage.md)
 - [Config reference](docs/config_reference.md)
+- [Config example](environments/dev.ini)
 
 # Attributions
 
