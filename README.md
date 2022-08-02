@@ -36,7 +36,5 @@ There's a template under environments/dev.ini that could be used. More details c
 
 The following sources have been used for reference purposes.
 - [Daemon] https://web.archive.org/web/20160320091458/http://www.jejik.com/files/examples/daemon3x.py
-- [Kafka] https://github.com/aiven/aiven-examples/tree/master/kafka/python
 - [Kafka] https://towardsdatascience.com/kafka-python-explained-in-10-lines-of-code-800e3e07dad1
 - [PostgreSQL] https://www.psycopg.org/docs/usage.html
-- [PostgreSQL] https://github.com/aiven/aiven-examples/blob/master/postgresql/python/main.py
