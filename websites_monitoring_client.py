@@ -10,9 +10,10 @@ def main():
     namespace, extra_args = parse_args()
 
     #According function will be run based on the given arguments
-    for name, function in COMMANDS.items():
+    for name, func in COMMANDS.items():
         if name == namespace.cmd:
-            function(namespace, extra_args)
+            current_module = sys.modules[__name__]
+            getattr(current_module, func)(namespace, extra_args)
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Parsing command line arguments")
